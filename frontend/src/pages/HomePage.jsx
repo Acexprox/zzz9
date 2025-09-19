@@ -203,15 +203,13 @@ const HomePage = () => {
  
  {/* الأزرار معاً في سطح المكتب */}
  <div className="hidden sm:flex flex-row gap-2 justify-center mb-4 mt-8">
- <div className="download-button-wrapper">
-   <Link
-     to="/contact"
-     className="hero-button cta-button bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:from-yellow-600 hover:to-orange-600 transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center gap-2"
-   >
-     ابدأ مشروعك الآن
-     <ArrowLeft className="w-5 h-5" />
-   </Link>
- </div>
+ <Link
+   to="/contact"
+   className="hero-button cta-button bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:from-yellow-600 hover:to-orange-600 transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center gap-2"
+ >
+   ابدأ مشروعك الآن
+   <ArrowLeft className="w-5 h-5" />
+ </Link>
  <button className="hero-button border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl font-semibold text-lg hover:border-yellow-500 hover:text-yellow-600 transition-all duration-300 flex items-center justify-center gap-2">
  <Play className="w-5 h-5" />
  شاهد العرض التوضيحي
