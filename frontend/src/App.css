@@ -343,14 +343,52 @@ body { font-family: var(--font-family); background-color: var(--bg-color); color
 
 .download-btn:focus {
   outline: none;
-  box-shadow:
-    0 8px 4.8px rgb(18 18 18 / 35%),
-    0 8px 40px rgba(2, 220, 89, 0.777);
+  box-shadow: 0 8px 4.8px rgb(18 18 18 / 35%);
   background: linear-gradient(0deg, #ffffff 30%, #ffffff 30%, #d6d6d6);
+  position: relative;
 }
 
 .download-btn:focus::before {
   box-shadow: 0 3.2px 3.2px inset #808080;
+}
+
+.download-btn:focus::after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border: 2px solid #00ff88;
+  border-radius: 50px;
+  background: transparent;
+  box-shadow: 
+    0 0 15px #00ff88,
+    0 0 25px #00ff88,
+    0 0 35px #00ff88,
+    inset 0 0 15px rgba(0, 255, 136, 0.2);
+  animation: neonPulse 1.5s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes neonPulse {
+  0% {
+    border-color: #00ff88;
+    box-shadow: 
+      0 0 10px #00ff88,
+      0 0 20px #00ff88,
+      0 0 30px #00ff88,
+      inset 0 0 10px rgba(0, 255, 136, 0.1);
+  }
+  100% {
+    border-color: #00ffaa;
+    box-shadow: 
+      0 0 20px #00ffaa,
+      0 0 30px #00ffaa,
+      0 0 40px #00ffaa,
+      inset 0 0 20px rgba(0, 255, 170, 0.3);
+  }
 }
 
 /* ---- TrustMetrics animations ---- */
