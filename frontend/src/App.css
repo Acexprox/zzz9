@@ -409,35 +409,75 @@ body { font-family: var(--font-family); background-color: var(--bg-color); color
   }
 }
 
+/* تحسين خاص لزر التحميل الدائري الصغير في الهيدر */
+.download-button-wrapper a {
+  position: relative;
+  z-index: 1;
+}
+
+/* تأثير مخصص للزر الدائري الصغير */
+.download-button-wrapper::before {
+  border-radius: 50%;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-width: 1.5px;
+}
+
+.download-button-wrapper::after {
+  border-radius: 50%;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+}
+
+.download-button-wrapper:hover::before {
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border-width: 2px;
+}
+
+.download-button-wrapper:hover::after {
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+}
+
 /* تحسين الاستجابة للشاشات الصغيرة */
 @media (max-width: 640px) {
   .download-button-wrapper::before {
-    top: -6px;
-    left: -6px;
-    right: -6px;
-    bottom: -6px;
-    border-width: 1.5px;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-width: 1px;
   }
   
   .download-button-wrapper::after {
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+  }
+  
+  .download-button-wrapper:hover::before {
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-width: 1.5px;
+  }
+  
+  .download-button-wrapper:hover::after {
     top: -4px;
     left: -4px;
     right: -4px;
     bottom: -4px;
-  }
-  
-  .download-button-wrapper:hover::before {
-    top: -8px;
-    left: -8px;
-    right: -8px;
-    bottom: -8px;
-  }
-  
-  .download-button-wrapper:hover::after {
-    top: -6px;
-    left: -6px;
-    right: -6px;
-    bottom: -6px;
   }
 }
 
