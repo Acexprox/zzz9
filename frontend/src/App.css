@@ -345,29 +345,15 @@ body { font-family: var(--font-family); background-color: var(--bg-color); color
   outline: none;
   box-shadow: 0 8px 4.8px rgb(18 18 18 / 35%);
   background: linear-gradient(0deg, #ffffff 30%, #ffffff 30%, #d6d6d6);
-  position: relative;
+  border: 2px solid #00ff88;
+  animation: neonBorderPulse 1.5s ease-in-out infinite alternate;
 }
 
 .download-btn:focus::before {
   box-shadow: 0 3.2px 3.2px inset #808080;
 }
 
-.download-btn:focus::after {
-  content: "";
-  position: absolute;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-  border: 2px solid #00ff88;
-  border-radius: 50px;
-  background: transparent;
-  animation: neonPulse 1.5s ease-in-out infinite alternate;
-  pointer-events: none;
-  z-index: 1;
-}
-
-@keyframes neonPulse {
+@keyframes neonBorderPulse {
   0% {
     border-color: #00ff88;
   }
@@ -376,37 +362,21 @@ body { font-family: var(--font-family); background-color: var(--bg-color); color
   }
 }
 
-/* تأثير إضافي عند الضغط - خط نيون أكثر كثافة */
-.download-btn:active::after {
-  content: "";
-  position: absolute;
-  top: -8px;
-  left: -8px;
-  right: -8px;
-  bottom: -8px;
+/* تأثير إضافي عند الضغط - الخط المنحوت نفسه يولع أكثر */
+.download-btn:active {
   border: 3px solid #00ff44;
-  border-radius: 50px;
-  background: transparent;
-  animation: neonFlash 0.3s ease-out;
-  pointer-events: none;
-  z-index: 1;
+  animation: neonBorderFlash 0.3s ease-out;
 }
 
-@keyframes neonFlash {
+@keyframes neonBorderFlash {
   0% {
     border-color: #00ff88;
-    opacity: 0;
-    transform: scale(0.8);
   }
   50% {
     border-color: #00ff44;
-    opacity: 1;
-    transform: scale(1.1);
   }
   100% {
     border-color: #00ff44;
-    opacity: 1;
-    transform: scale(1);
   }
 }
 
