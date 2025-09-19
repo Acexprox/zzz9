@@ -232,14 +232,14 @@ const Header = () => {
  </Link>
  
  {/* زر تحميل */}
- <div className="download-button-wrapper">
+ <div className="download-btn-container">
  <a
  href={DOWNLOAD_URL}
  download="USO.apk"
  aria-label="تحميل التطبيق"
- className="relative w-8 h-8 flex items-center justify-center rounded-full bg-white text-gray-700 shadow-[0_8px_24px_rgba(0,0,0,0.10)] ring-1 ring-black/5 hover:shadow-[0_12px_32px_rgba(0,0,0,0.14)] transition-colors icon-soft-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+ className="download-btn"
  >
- <Download className="icon-slightly-larger" />
+ <Download className="w-4 h-4" />
  </a>
  </div>
 
