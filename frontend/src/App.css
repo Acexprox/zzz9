@@ -493,6 +493,52 @@ body { font-family: var(--font-family); background-color: var(--bg-color); color
   }
 }
 
+/* تأثير تركيز محسّن للـ accessibility */
+.download-button-wrapper a:focus-visible {
+  outline: none;
+}
+
+.download-button-wrapper a:focus-visible ~ ::before,
+.download-button-wrapper a:focus-visible::before {
+  opacity: 1;
+  animation: rotateGradient 1.5s linear infinite, focusPulse 2s ease-in-out infinite;
+}
+
+@keyframes focusPulse {
+  0%, 100% { 
+    opacity: 0.8; 
+    transform: scale(1); 
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1.1); 
+  }
+}
+
+/* تأثير إضافي عند تحميل الملف */
+.download-button-wrapper:active {
+  transform: scale(0.95);
+}
+
+.download-button-wrapper:active::before {
+  animation: downloadSuccess 0.8s ease-out;
+}
+
+@keyframes downloadSuccess {
+  0% { 
+    opacity: 0.3; 
+    transform: scale(0.8) rotate(0deg); 
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1.2) rotate(180deg);
+  }
+  100% { 
+    opacity: 0.8; 
+    transform: scale(1) rotate(360deg); 
+  }
+}
+
 /* ---- TrustMetrics animations ---- */
 @keyframes tm-pulse-soft { 0%, 100% { transform: scale(1);} 50% { transform: scale(1.08);} }
 .tm-pulse-soft { animation: tm-pulse-soft 2.6s ease-in-out infinite; }
