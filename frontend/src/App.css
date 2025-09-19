@@ -297,6 +297,162 @@ body { font-family: var(--font-family); background-color: var(--bg-color); color
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; } }
 
+/* تأثير الخط الدائري المنحوت حول أزرار التنزيل */
+.download-button-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.download-button-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border: 2px solid transparent;
+  border-radius: 50px;
+  background: linear-gradient(135deg, 
+    rgba(214, 182, 97, 0.6) 0%, 
+    rgba(232, 163, 23, 0.4) 25%,
+    rgba(255, 167, 38, 0.3) 50%,
+    rgba(255, 112, 67, 0.4) 75%,
+    rgba(214, 182, 97, 0.6) 100%
+  );
+  background-size: 200% 200%;
+  animation: rotateGradient 4s linear infinite;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.download-button-wrapper::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border-radius: 48px;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.9) 0%, 
+    rgba(250, 248, 245, 0.95) 100%
+  );
+  box-shadow: 
+    inset 0 2px 4px rgba(214, 182, 97, 0.2),
+    inset 0 -2px 4px rgba(232, 163, 23, 0.15),
+    0 4px 12px rgba(214, 182, 97, 0.1);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  pointer-events: none;
+  z-index: -2;
+}
+
+.download-button-wrapper:hover::before {
+  opacity: 1;
+  top: -12px;
+  left: -12px;
+  right: -12px;
+  bottom: -12px;
+  animation-duration: 2s;
+}
+
+.download-button-wrapper:hover::after {
+  opacity: 1;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  box-shadow: 
+    inset 0 3px 6px rgba(214, 182, 97, 0.25),
+    inset 0 -3px 6px rgba(232, 163, 23, 0.2),
+    0 6px 16px rgba(214, 182, 97, 0.15),
+    0 2px 8px rgba(214, 182, 97, 0.1);
+}
+
+@keyframes rotateGradient {
+  0% {
+    background-position: 0% 50%;
+    transform: rotate(0deg);
+  }
+  25% {
+    background-position: 100% 25%;
+  }
+  50% {
+    background-position: 100% 100%;
+    transform: rotate(180deg);
+  }
+  75% {
+    background-position: 0% 75%;
+  }
+  100% {
+    background-position: 0% 50%;
+    transform: rotate(360deg);
+  }
+}
+
+/* تأثير نبضة خفية للخط الدائري */
+.download-button-wrapper.active::before {
+  animation: rotateGradient 2s linear infinite, 
+             pulseCircle 3s ease-in-out infinite;
+}
+
+@keyframes pulseCircle {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+/* تحسين الاستجابة للشاشات الصغيرة */
+@media (max-width: 640px) {
+  .download-button-wrapper::before {
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    border-width: 1.5px;
+  }
+  
+  .download-button-wrapper::after {
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+  }
+  
+  .download-button-wrapper:hover::before {
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+  }
+  
+  .download-button-wrapper:hover::after {
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+  }
+}
+
+/* تأثير خاص للمس في الأجهزة اللمسية */
+@media (hover: none) and (pointer: coarse) {
+  .download-button-wrapper:active::before {
+    opacity: 1;
+    animation-duration: 1s;
+  }
+  
+  .download-button-wrapper:active::after {
+    opacity: 1;
+  }
+}
+
 /* ---- TrustMetrics animations ---- */
 @keyframes tm-pulse-soft { 0%, 100% { transform: scale(1);} 50% { transform: scale(1.08);} }
 .tm-pulse-soft { animation: tm-pulse-soft 2.6s ease-in-out infinite; }
