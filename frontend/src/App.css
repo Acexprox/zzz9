@@ -297,246 +297,69 @@ body { font-family: var(--font-family); background-color: var(--bg-color); color
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; } }
 
-/* تأثير الخط الدائري المنحوت حول أزرار التنزيل */
-.download-button-wrapper {
+/* تصميم زر التحميل المصغر الاحترافي */
+.download-btn-container {
+  height: 32px;
+  width: 32px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  display: inline-block;
 }
 
-.download-button-wrapper::before {
-  content: '';
+.download-btn {
+  position: relative;
+  background: linear-gradient(#ffffff 30%, #ffffff 30%, #d6d6d6);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #ffffff;
+  transition: 0.3s;
+  box-shadow: 0 2px 3px rgba(18, 18, 18, 0.35);
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.download-btn::before {
+  content: "";
+  width: 125%;
+  height: 125%;
+  background: rgb(224, 224, 224);
+  box-shadow: 0 1px 2px inset #808080;
   position: absolute;
-  top: -8px;
-  left: -8px;
-  right: -8px;
-  bottom: -8px;
-  border: 2px solid transparent;
-  border-radius: 50px;
-  background: linear-gradient(135deg, 
-    rgba(214, 182, 97, 0.6) 0%, 
-    rgba(232, 163, 23, 0.4) 25%,
-    rgba(255, 167, 38, 0.3) 50%,
-    rgba(255, 112, 67, 0.4) 75%,
-    rgba(214, 182, 97, 0.6) 100%
-  );
-  background-size: 200% 200%;
-  animation: rotateGradient 4s linear infinite;
-  opacity: 0;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  pointer-events: none;
+  left: -12.5%;
+  top: -12.5%;
   z-index: -1;
+  border-radius: inherit;
+  transition: 0.3s;
 }
 
-.download-button-wrapper::after {
-  content: '';
-  position: absolute;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-  border-radius: 48px;
-  background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.9) 0%, 
-    rgba(250, 248, 245, 0.95) 100%
-  );
-  box-shadow: 
-    inset 0 2px 4px rgba(214, 182, 97, 0.2),
-    inset 0 -2px 4px rgba(232, 163, 23, 0.15),
-    0 4px 12px rgba(214, 182, 97, 0.1);
-  opacity: 0;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  pointer-events: none;
-  z-index: -2;
+.download-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(18, 18, 18, 0.35);
 }
 
-.download-button-wrapper:hover::before {
-  opacity: 1;
-  top: -12px;
-  left: -12px;
-  right: -12px;
-  bottom: -12px;
-  animation-duration: 2s;
-}
-
-.download-button-wrapper:hover::after {
-  opacity: 1;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
-  box-shadow: 
-    inset 0 3px 6px rgba(214, 182, 97, 0.25),
-    inset 0 -3px 6px rgba(232, 163, 23, 0.2),
-    0 6px 16px rgba(214, 182, 97, 0.15),
-    0 2px 8px rgba(214, 182, 97, 0.1);
-}
-
-@keyframes rotateGradient {
-  0% {
-    background-position: 0% 50%;
-    transform: rotate(0deg);
-  }
-  25% {
-    background-position: 100% 25%;
-  }
-  50% {
-    background-position: 100% 100%;
-    transform: rotate(180deg);
-  }
-  75% {
-    background-position: 0% 75%;
-  }
-  100% {
-    background-position: 0% 50%;
-    transform: rotate(360deg);
-  }
-}
-
-/* تأثير نبضة خفية للخط الدائري */
-.download-button-wrapper.active::before {
-  animation: rotateGradient 2s linear infinite, 
-             pulseCircle 3s ease-in-out infinite;
-}
-
-@keyframes pulseCircle {
-  0%, 100% {
-    opacity: 0.8;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-}
-
-/* تحسين خاص لزر التحميل الدائري الصغير في الهيدر */
-.download-button-wrapper a {
-  position: relative;
-  z-index: 1;
-}
-
-/* تأثير مخصص للزر الدائري الصغير */
-.download-button-wrapper::before {
-  border-radius: 50%;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border-width: 1.5px;
-}
-
-.download-button-wrapper::after {
-  border-radius: 50%;
-  top: -3px;
-  left: -3px;
-  right: -3px;
-  bottom: -3px;
-}
-
-.download-button-wrapper:hover::before {
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-  border-width: 2px;
-}
-
-.download-button-wrapper:hover::after {
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-}
-
-/* تحسين الاستجابة للشاشات الصغيرة */
-@media (max-width: 640px) {
-  .download-button-wrapper::before {
-    top: -3px;
-    left: -3px;
-    right: -3px;
-    bottom: -3px;
-    border-width: 1px;
-  }
-  
-  .download-button-wrapper::after {
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-  }
-  
-  .download-button-wrapper:hover::before {
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    border-width: 1.5px;
-  }
-  
-  .download-button-wrapper:hover::after {
-    top: -4px;
-    left: -4px;
-    right: -4px;
-    bottom: -4px;
-  }
-}
-
-/* تأثير خاص للمس في الأجهزة اللمسية */
-@media (hover: none) and (pointer: coarse) {
-  .download-button-wrapper:active::before {
-    opacity: 1;
-    animation-duration: 1s;
-  }
-  
-  .download-button-wrapper:active::after {
-    opacity: 1;
-  }
-}
-
-/* تأثير تركيز محسّن للـ accessibility */
-.download-button-wrapper a:focus-visible {
+.download-btn:focus {
   outline: none;
+  box-shadow:
+    0 4px 6px rgba(18, 18, 18, 0.35),
+    0 0 15px rgba(2, 220, 89, 0.5);
+  background: linear-gradient(0deg, #ffffff 30%, #ffffff 30%, #d6d6d6);
 }
 
-.download-button-wrapper a:focus-visible ~ ::before,
-.download-button-wrapper a:focus-visible::before {
-  opacity: 1;
-  animation: rotateGradient 1.5s linear infinite, focusPulse 2s ease-in-out infinite;
+.download-btn:focus::before {
+  box-shadow: 0 1px 2px inset #808080;
 }
 
-@keyframes focusPulse {
-  0%, 100% { 
-    opacity: 0.8; 
-    transform: scale(1); 
-  }
-  50% { 
-    opacity: 1; 
-    transform: scale(1.1); 
-  }
-}
-
-/* تأثير إضافي عند تحميل الملف */
-.download-button-wrapper:active {
-  transform: scale(0.95);
-}
-
-.download-button-wrapper:active::before {
-  animation: downloadSuccess 0.8s ease-out;
-}
-
-@keyframes downloadSuccess {
-  0% { 
-    opacity: 0.3; 
-    transform: scale(0.8) rotate(0deg); 
-  }
-  50% { 
-    opacity: 1; 
-    transform: scale(1.2) rotate(180deg);
-  }
-  100% { 
-    opacity: 0.8; 
-    transform: scale(1) rotate(360deg); 
-  }
+.download-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 2px rgba(18, 18, 18, 0.35);
 }
 
 /* ---- TrustMetrics animations ---- */
