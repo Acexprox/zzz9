@@ -232,6 +232,7 @@ const Header = () => {
  </Link>
  
  {/* زر تحميل */}
+ <div className="download-button-wrapper">
  <a
  href={DOWNLOAD_URL}
  download="USO.apk"
@@ -240,6 +241,7 @@ const Header = () => {
  >
  <Download className="icon-slightly-larger" />
  </a>
+ </div>
 
  {/* زر القائمة */}
  <button
